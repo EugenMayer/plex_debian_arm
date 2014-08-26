@@ -1,0 +1,11 @@
+#!/bin/bash
+adduser --quiet --system --shell /bin/bash --home /var/lib/plexmediaserver --group "plex"
+#mkdir -p /mnt/data/server/plexdata
+#chown plex:plex /mnt/data/server/plexdata -R
+mkdir -p /var/lib/plexmediaserver
+cp debian /var/lib/plexmediaserver -fr
+cp Application /var/lib/plexmediaserver -fr
+chown plex:plex /var/lib/plexmediaserver
+cp debian/default /etc/default/plexmediaserver
+ln -s /var/lib/plexmediaserver/Debian/bin/start_pms /usr/sbin/start_pms
+ln -s /var/lib/plexmediaserver/Debian/init.d/plexmediaserver /etc/init.d/plexmediaserver
